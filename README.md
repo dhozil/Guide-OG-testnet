@@ -136,7 +136,7 @@ sudo systemctl restart 0gchaind  && sudo journalctl -fu 0gchaind  -o cat
 
 ### Validator info
 ```
-0gchaind q staking validator $(0gchaind keys show $WALLET --bech val -a)
+0gchaind q staking validator $(0gchaind keys show wallet --bech val -a)
 ```
 
 ### Node info
