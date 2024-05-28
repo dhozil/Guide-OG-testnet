@@ -116,7 +116,7 @@ sudo systemctl restart 0gchaind  && sudo journalctl -fu 0gchaind  -o cat
 ### Create validator
 ```
 0gchaind tx staking create-validator \
-  --amount=10000000000000000ua0gi \
+  --amount=900000ua0gi \
   --pubkey=$(0gchaind tendermint show-validator) \
   --moniker="YOUR-MONIKER" \
   --chain-id=zgtendermint_16600-1 \
