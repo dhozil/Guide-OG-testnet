@@ -25,13 +25,9 @@ go version
 
 ### Install binary
 ```
-cd $HOME
-git clone https://github.com/0glabs/0g-chain.git
-cd 0gchain
-git checkout v0.2.3 
-
-# Build binary
-make build
+git clone -b v0.2.3 https://github.com/0glabs/0g-chain.git
+cd 0g-chain
+make install
 ```
 
 ### Init Moniker
