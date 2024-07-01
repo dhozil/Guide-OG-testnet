@@ -46,7 +46,7 @@ wget -P ~/.0gchain/config https://github.com/0glabs/0g-chain/releases/download/v
 
 ### Set minimum gas price & peers
 ```
-sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0agnet"|g' $HOME/.0gchain/config/app.toml
+sed -i "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0ua0gi\"/" $HOME/.0gchain/config/app.toml
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.0gchain/config/config.toml
 ```
 ```
