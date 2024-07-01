@@ -43,13 +43,9 @@ make build
 ### Set up configuration
 Prepare the genesis file And set some mandatory configuration options
 ```
+sudo apt install -y unzip wget
 rm ~/.0gchain/config/genesis.json
-curl -Ls https://github.com/0glabs/0g-chain/releases/download/v0.1.0/genesis.json > $HOME/.0gchain/config/genesis.json
-curl -Ls https://raw.githubusercontent.com/Core-Node-Team/Testnet-TR/main/0G-Newton/addrbook.json > $HOME/.0gchain/config/addrbook.json
-```
-```
-rm ~/.0gchain/config/genesis.json
-wget -P ~/.0gchain/config https://github.com/0glabs/0g-chain/releases/download/v0.1.0/genesis.json
+wget -P ~/.0gchain/config https://github.com/0glabs/0g-chain/releases/download/v0.2.3/genesis.json
 ```
 
 ### Set minimum gas price & peers
