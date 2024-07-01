@@ -25,16 +25,19 @@ go version
 
 ### Install binary
 ```
-cd $HOME && mkdir -p go/bin/
-git clone -b v0.1.0 https://github.com/0glabs/0g-chain.git
-./0g-chain/networks/testnet/install.sh
-source .profile
+cd $HOME
+git clone https://github.com/0glabs/0g-chain.git
+cd 0gchain
+git checkout v0.2.3 
+
+# Build binary
+make build
 ```
 
 ### Init Moniker
 ```
-0gchaind config chain-id zgtendermint_16600-1
-0gchaind init YOUR-MONIKER --chain-id zgtendermint_16600-1
+0gchaind config chain-id zgtendermint_16600-2
+0gchaind init YOUR-MONIKER --chain-id zgtendermint_16600-2
 ```
 
 ### Set up configuration
@@ -56,7 +59,7 @@ sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.0gchain/config/config
 ```
 ```
 # Update peers in the config
-PEERS="5ee69001a49e9fad7f60cad99f0a91d823810757@82.67.49.126:37000,d50aa74398af77c6c7bb5483bb1760989b780b8d@109.123.236.150:26656,213a99e681bcd8160ea1d209b8298c86e0355e67@94.156.117.229:26656,4b37705126b4cf304265e9d31c982b39bfb76c9a@94.156.117.19:26656,a41a2ef37d4bd5886f25010815cea53c7bd105cb@109.199.123.253:26656,6220bc5afb26f02627d13819b282aadad14f07c1@38.242.201.36:26656,a6076b5d78b9b37fd3488af51f2b9dcc6978f9e8@185.11.251.182:47656,ffa48d99f37eaf5473a02487ef26fd7691f770aa@149.102.141.113:26656,74fd185131f9903c694dec71a17b5def4f5d6fc1@80.71.227.186:26656,149f92d947d99aaadf2f1a01f510d528915b1952@45.94.209.90:26656,0be430094f421c136200fd2353f3082a0de0997f@62.171.144.252:16656,3bc22d3f241e2a292b583f06bc875f272ec2873e@207.244.244.26:26656,23ca14ea5c8f4dc37815f2108bd3b5157945a638@161.97.73.109:16656,da69988481b49b9e6865620a1296366bf36aeb11@213.199.39.178:26656,eb5053d264804ec65922065f888393ed38f6264c@5.78.79.198:16656" && \
+PEERS="5a9aac3b111f8ef78da298d747f6f79daf2b5954@31.220.75.10:12656,8609834e666efda4caf41f3f2fa293d1df39a495@38.242.240.234:12656,cadf176a1a7cc769cb2e614728c5455bbc4c9be1@158.220.125.5:12656,c311c0e00ba7a8d998a57cbdb77c769279e5d79b@161.97.152.80:56656,df4cc52fa0fcdd5db541a28e4b5a9c6ce1076ade@37.60.246.110:13456,6e044d233c4abb2cc970c8fc2e968273c38a874e@167.86.116.237:12656,0dade47457780be569d7e5be9eedcf6731ed2d18@5.189.133.249:12656,87050b88e0dff2df18caff484e01c32d9f6e6a49@185.209.223.108:12656,d7921529d985b18096ea5cc5d023806af91fd51e@157.90.128.250:58656,55982724a7a30944215ad45924071f1efc1eef4a@116.202.174.53:26856,5ba403bf2183ffbc2aea2508af82041ad69cb883@195.201.242.245:12656,9d06dc7b225e7c32146896d5fec3d91ffe1c5395@94.130.137.49:26656,6a07fd41680eacfd29b63c7ce07a0f20af18bfa8@193.233.75.244:26656,3b3ddcd4de429456177b29e5ca0febe4f4c21989@75.119.139.198:26656,4577c3d8be80ca946da72f138f0c7d1d311f9be6@31.220.73.247:26656" && \
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.0gchain/config/config.toml
 ```
 
@@ -66,7 +69,7 @@ sed -i \
   -e 's|^pruning *=.*|pruning = "custom"|' \
   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
   -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
-  -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
+  -e 's|^pruning-interval *=.*|pruning-interval = "10"|' \
   $HOME/.0gchain/config/app.toml
 ```
 
@@ -119,7 +122,7 @@ sudo systemctl restart 0gchaind  && sudo journalctl -fu 0gchaind  -o cat
   --amount=900000ua0gi \
   --pubkey=$(0gchaind tendermint show-validator) \
   --moniker="YOUR-MONIKER" \
-  --chain-id=zgtendermint_16600-1 \
+  --chain-id=zgtendermint_16600-2 \
   --commission-rate=0.05 \
   --commission-max-rate=0.1 \
   --commission-max-change-rate=0.1 \
